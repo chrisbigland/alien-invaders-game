@@ -1,0 +1,26 @@
+{
+  "name": "hostile-aliens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisbigland/alien-invaders-game.git"
+  },
+  "keywords": [],
+  "author": "Chris Bigland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisbigland/alien-invaders-game/issues"
+  },
+  "homepage": "https://github.com/chrisbigland/alien-invaders-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.2.2",
+    "jest": "^29.2.2"
+  }
+}

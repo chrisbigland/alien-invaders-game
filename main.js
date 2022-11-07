@@ -1,68 +1,71 @@
-// class Ship {
+export class Ship {
+  constructor(shipName, shipType, hitValue, shipScore) {
+    this.shipName = shipName;
+    this.shipType = shipType;
+    this.hitValue = hitValue;
+    this.shipScore = shipScore;
+  }
+  shoot(shipsArr) {
+    const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
+    return targetShipIndex;
+    // Select random ship (in an array of objects)
+    // output - random ship
+  }
+  hit(targetShipIndex) { // accepts a number input
+    const targetShip = shipsArr[targetShipIndex]; // don't need to use '.this' here as targetShipIndex already given??
+    const newScore = targetShip.shipScore - targetShip.hitValue;
+    targetShip.shipScore = newScore;
+    return targetShip.shipScore;        //returns a reduced score
+  } // (alien ship scores reduce)
+  //   updatePlayerScore() {
 
-// }
-//-
-// starting points
-// // hit points lost
+  //   }
+  //   destroyShip() {
 
-// Arr of objects
-// const shipsArr = [
-//   motherShip,
-//   defenceShip1,
-//   defenceShip2,
-//   defenceShip3,
-//   defenceShip4,
-//   defenceShip5,
-//   attackShip1,
-//   attackShip2,
-//   attackShip3,
-//   attackShip4,
-//   attackShip5,
-//   attackShip6,
-//   attackShip7,
-//   attackShip8,
-// ];
+  //   } //(ship removed from array)
+}
 
-// const motherShip = new Ship()
-// const defenceShip1 = new Ship()
-// const defenceShip2 = new Ship()
-// const defenceShip3 = new Ship()
-// const defenceShip4 = new Ship()
-// const defenceShip5 = new Ship()
-// const attackShip1 = new Ship()
-// const attackShip2 = new Ship()
-// const attackShip3 = new Ship()
-// const attackShip4 = new Ship()
-// const attackShip5 = new Ship()
-// const attackShip6 = new Ship()
-// const attackShip7 = new Ship()
-// const attackShip8 = new Ship()
+const motherShip = new Ship("Mother Ship", "Mother Ship", 9, 100);
+
+const defenceShip1 = new Ship("Defence Ship 1", "Defence Ship", 10, 80);
+
+const defenceShip2 = new Ship("Defence Ship 2", "Defence Ship", 10, 80);
+const defenceShip3 = new Ship("Defence Ship 3", "Defence Ship", 10, 80);
+const defenceShip4 = new Ship("Defence Ship 4", "Defence Ship", 10, 80);
+const defenceShip5 = new Ship("Defence Ship 5", "Defence Ship", 10, 80);
+
+const attackShip1 = new Ship("Attack Ship 1", "Attack Ship", 12, 45);
+const attackShip2 = new Ship("Attack Ship 2", "Attack Ship", 12, 45);
+const attackShip3 = new Ship("Attack Ship 3", "Attack Ship", 12, 45);
+const attackShip4 = new Ship("Attack Ship 4", "Attack Ship", 12, 45);
+const attackShip5 = new Ship("Attack Ship 5", "Attack Ship", 12, 45);
+const attackShip6 = new Ship("Attack Ship 6", "Attack Ship", 12, 45);
+const attackShip7 = new Ship("Attack Ship 7", "Attack Ship", 12, 45);
+const attackShip8 = new Ship("Attack Ship 8", "Attack Ship", 12, 45);
+
+const shipsArr = [
+  motherShip,
+  defenceShip1,
+  defenceShip2,
+  defenceShip3,
+  defenceShip4,
+  defenceShip5,
+  attackShip1,
+  attackShip2,
+  attackShip3,
+  attackShip4,
+  attackShip5,
+  attackShip6,
+  attackShip7,
+  attackShip8,
+];
 
 // methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score, startNewGame
 
 // FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS  - keep them pure. Can adapt to class methods later if reqd.
 
-
-
-
 // SHOOT - random ship selected, run hit function
 // runs when player clicks button
-
-const testShipsArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// to make pure, simply include input and a return then hit can also be run when user clicks and use the returned data from this function i.e. which ship.
-const shoot = (testShipsArr) => {
-  //   console.log(testShipsArr);
-  //   const lengthOfArr = testShipsArr.length;
-  //   console.log(lengthOfArr);
-  const targetShipIndex = Math.floor(Math.random() * testShipsArr.length);
-  console.log(targetShipIndex);
-  return targetShipIndex;
-  // Select random ship (in an array of objects - for the test, use dummy data)
-  // output - random ship
-};
-
-shoot(testShipsArr);
 
 // HIT - to run on click of shoot button. Uses return from shoot function (use dummy data in test) to select ship and reduce score accordingly. If ship score is 0, removes item from shipsArray.
 // const hit = (casualtyShip) => {
@@ -111,5 +114,5 @@ shoot(testShipsArr);
 //▪ Each starts with 45 hit points
 //▪ Each loses 12 hit points each time it is hit.
 
-// methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score
+// methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score, destroy ship (ship removed from array)
 // data - score, (timer?), number of ships left, ships' health, number of ships left, ships starting scores, amount score gets lowered each time hit.
