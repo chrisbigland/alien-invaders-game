@@ -1,11 +1,36 @@
-// import { it } from "node:test";
 import { Ship } from "./main.js";
 
 // test plan - already written two functions with code so do like that for now.
 // following tests - write 'stub' functions first (look into this) and then test them. They'll fail at first, write the code to make them pass. Maybe research tdd and stub functions
 
+// TESTS
+// SHOOT METHOD
+// 1. should return a number that is less than 14 when 14 items are inputted
+// 2. should return a number that is less than 9 when 9 items are inputted
+// 3. should return a number that is less than 9 when 9 items are inputted
+// 4. should return as 'null' if the input is an empty array
+// HIT METHOD
+// 1. should reduce the mothership score by 9, returning a score of 91
+// 2. should reduce the defence ship score by 10, returning a score of 70
+// 3. should reduce the attack ship score by 12, returning a score of 33
+// 4. should reduce the defence ship score by 10, returning a score of 20 when the current score is 30
+// 5. should trigger the destroyShip() function on the mother ship if the current score is 1. Not sure if I can test this??
+// 5. should trigger the destroyShip() function on the defence ship if the current score is 10. Not sure if I can test this??
+// 5. should trigger the destroyShip() function on the attack ship if the current score is 9. Not sure if I can test this??
+// DESTROY SHIP
+// 1. should remove the ship from the array. 
+// 2. should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed. 
+// 3. should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed. 
+// GAME OVER
+// 1. I don't think I can test for this - changing html
+// PLAYER WINS
+// same as above - don't believe I can test it - gets triggered when ships arr.length = 0 and innerhtml changes
+// TIMER
+// 1. If timer reaches zero, game over function initiated
+
+
 const testMotherShip = new Ship("Mother Ship", "Mother Ship", 9, 100);
-const testDefenceShip = new Ship("Test Ship", "Defence Ship", 10, 80);
+const testDefenceShip = new Ship("Defence Ship", "Defence Ship", 10, 80);
 const testAttackShip = new Ship("Attack Ship 1", "Attack Ship", 12, 45);
 
 let ship1;
@@ -43,7 +68,7 @@ describe("shoot method test", () => {
     ];
     const output = testDefenceShip.shoot(largeShipsArr);
     expect(output).toBeLessThan(14);
-    expect(output).toBeGreaterThan(0);
+    expect(output).toBeGreaterThan(-1);
   });
   it("should return a number that is less than 9 when 9 items are inputted", () => {
     const smallShipsArr = [
@@ -59,11 +84,11 @@ describe("shoot method test", () => {
     ];
     const output = testDefenceShip.shoot(smallShipsArr);
     expect(output).toBeLessThan(9);
-    expect(output).toBeGreaterThan(0);
+    expect(output).toBeGreaterThan(-1);
   });
   it("should return as 'null' if the input is an empty array", () => {
     const emptyShipsArr = [];
-    output = testDefenceShip.shoot(emptyShipsArr);
+    const output = testDefenceShip.shoot(emptyShipsArr);
     expect(output).toBe(null);
   });
 });
@@ -81,7 +106,24 @@ describe("hit method test", () => {
     const score = testAttackShip.hit(6);
     expect(score).toBe(33);
   });
+  it("should reduce the defence ship score by 10, returning a score of 20 when the current score is 30", () => {
+    testDefenceShip.shipScore = 30; // I don't think this is working
+    const score = testDefenceShip.hit(1);
+    expect(score).toBe(20);
+  });
 });
+
+describe("destroy method test", () => {
+    it("should remove one ship from the array when a ship has zero points", () => {
+        testAttackShip.destroy()
+    })
+    it("should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed. ", () => {
+        
+    })
+    it("should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed. ", () => {
+        
+    })
+})
 
 // how do we test if it is working with an updated score (e.g. already been reduced)
 

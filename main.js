@@ -1,22 +1,25 @@
-export class Ship {
-  constructor(shipName, shipType, hitValue, shipScore) {
+// export
+class Ship {
+  constructor(shipName, shipType, hitValue, shipScore, id) {
     this.shipName = shipName;
     this.shipType = shipType;
     this.hitValue = hitValue;
     this.shipScore = shipScore;
+    this.id = id;
+    this.isDestroyed = false;
   }
-  shoot(shipsArr) {
-    const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
-    return targetShipIndex;
-    // Select random ship (in an array of objects)
-    // output - random ship
-  }
-  hit(targetShipIndex) { // accepts a number input
-    const targetShip = shipsArr[targetShipIndex]; // don't need to use '.this' here as targetShipIndex already given??
+
+  hit(targetShip) {
+    //REWORK THIS AS TARGETTING SHIP IN PREVIOUS FUNCTION
+    // accepts a number input
     const newScore = targetShip.shipScore - targetShip.hitValue;
     targetShip.shipScore = newScore;
-    return targetShip.shipScore;        //returns a reduced score
-  } // (alien ship scores reduce)
+    return targetShip.shipScore; //returns a reduced score
+  }
+  destroy() {
+    // when do change isDestroyed to true?
+  }
+  // (alien ship scores reduce)
   //   updatePlayerScore() {
 
   //   }
@@ -25,23 +28,23 @@ export class Ship {
   //   } //(ship removed from array)
 }
 
-const motherShip = new Ship("Mother Ship", "Mother Ship", 9, 100);
+const motherShip = new Ship("Mother Ship", "Mother Ship", 9, 100, 1);
 
-const defenceShip1 = new Ship("Defence Ship 1", "Defence Ship", 10, 80);
+const defenceShip1 = new Ship("Defence Ship 1", "Defence Ship", 10, 80, 2);
 
-const defenceShip2 = new Ship("Defence Ship 2", "Defence Ship", 10, 80);
-const defenceShip3 = new Ship("Defence Ship 3", "Defence Ship", 10, 80);
-const defenceShip4 = new Ship("Defence Ship 4", "Defence Ship", 10, 80);
-const defenceShip5 = new Ship("Defence Ship 5", "Defence Ship", 10, 80);
+const defenceShip2 = new Ship("Defence Ship 2", "Defence Ship", 10, 80, 3);
+const defenceShip3 = new Ship("Defence Ship 3", "Defence Ship", 10, 80, 4);
+const defenceShip4 = new Ship("Defence Ship 4", "Defence Ship", 10, 80, 5);
+const defenceShip5 = new Ship("Defence Ship 5", "Defence Ship", 10, 80, 6);
 
-const attackShip1 = new Ship("Attack Ship 1", "Attack Ship", 12, 45);
-const attackShip2 = new Ship("Attack Ship 2", "Attack Ship", 12, 45);
-const attackShip3 = new Ship("Attack Ship 3", "Attack Ship", 12, 45);
-const attackShip4 = new Ship("Attack Ship 4", "Attack Ship", 12, 45);
-const attackShip5 = new Ship("Attack Ship 5", "Attack Ship", 12, 45);
-const attackShip6 = new Ship("Attack Ship 6", "Attack Ship", 12, 45);
-const attackShip7 = new Ship("Attack Ship 7", "Attack Ship", 12, 45);
-const attackShip8 = new Ship("Attack Ship 8", "Attack Ship", 12, 45);
+const attackShip1 = new Ship("Attack Ship 1", "Attack Ship", 12, 45, 7);
+const attackShip2 = new Ship("Attack Ship 2", "Attack Ship", 12, 45, 8);
+const attackShip3 = new Ship("Attack Ship 3", "Attack Ship", 12, 45, 9);
+const attackShip4 = new Ship("Attack Ship 4", "Attack Ship", 12, 45, 10);
+const attackShip5 = new Ship("Attack Ship 5", "Attack Ship", 12, 45, 11);
+const attackShip6 = new Ship("Attack Ship 6", "Attack Ship", 12, 45, 12);
+const attackShip7 = new Ship("Attack Ship 7", "Attack Ship", 12, 45, 13);
+const attackShip8 = new Ship("Attack Ship 8", "Attack Ship", 12, 45, 14);
 
 const shipsArr = [
   motherShip,
@@ -59,6 +62,46 @@ const shipsArr = [
   attackShip7,
   attackShip8,
 ];
+
+const playerBtn = document.querySelector(".player");
+
+playerBtn.addEventListener("click", () => {
+  const targetShipIndex = shoot(shipsArr);
+  console.log(targetShipIndex);
+  console.log(shipsArr[targetShipIndex]);
+  const targetShip = shipsArr[targetShipIndex];
+  console.log(targetShip.shipScore);
+  targetShip.hit(targetShip);
+  console.log(`id is${targetShip.id}`);
+  const targetScoreHtml = document.querySelector(
+    `.ships__${targetShip.id}-score`
+  );
+  if (targetShip.shipScore > 0) {
+    targetScoreHtml.innerHTML = targetShip.shipScore;
+  } else {
+    shipsArr.splice(targetShipIndex, 1);
+    const targetShipHtml = document.querySelector(`.ships__${targetShip.id}`);
+    targetShipHtml.innerHTML = `<p>eliminated</p>`;
+  }
+  if (shipsArr.length === 0) {
+    console.log("it's empty");
+  }
+});
+
+// export
+const shoot = (shipsArr) => {
+  if (shipsArr.length > 0) {
+    const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
+    return targetShipIndex;
+  } else {
+    return null;
+  }
+  // Select random ship (in an array of objects)
+  // output - random ship
+};
+const destroy = (ship) => {
+  // Remove this ship from the array
+};
 
 // methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score, startNewGame
 
