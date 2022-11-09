@@ -64,6 +64,8 @@ const shipsArr = [
 ];
 
 const playerBtn = document.querySelector(".player");
+const gameboard = document.querySelector(".ships");
+const gameboardHtml = gameboard.innerHTML;
 
 playerBtn.addEventListener("click", () => {
   const targetShipIndex = shoot(shipsArr);
@@ -84,7 +86,14 @@ playerBtn.addEventListener("click", () => {
     targetShipHtml.innerHTML = `<p>eliminated</p>`;
   }
   if (shipsArr.length === 0) {
-    console.log("it's empty");
+    const winningHtml = document.querySelector(".ships");
+    winningHtml.innerHTML = `<p>You Win!!!</p>
+    <button class="ships__new-game-btn">New Game</button>`;
+    // console.log("it's empty");
+    const newGameBtn = document.querySelector(".ships__new-game-btn");
+    newGameBtn.addEventListener("click", () => {
+      winningHtml.innerHTML = gameboardHtml;
+    });
   }
 });
 
