@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+.title {
+  text-align: center;
+}
+
 .ships__scores {
   color: red;
 }
@@ -12,23 +16,27 @@
 .ships .ships__mothership {
   width: 60vw;
   box-shadow: 5px 5px;
+  border-radius: 50%;
 }
 .ships .ships__dship {
   width: 30vw;
   box-shadow: 2px 2px;
+  border-radius: 50%;
 }
 .ships .ships__aship {
   width: 15vw;
   box-shadow: 2px 2px;
+  border-radius: 50%;
 }
 .ships .ships__mothership, .ships .ships__dship, .ships .ships__aship {
   border: 2px solid black;
-  border-radius: 20px;
   display: flex;
 }
 
 .player {
   border: 2px solid black;
   border-radius: 20px;
+  width: 300px;
+  height: 300px;
   display: flex;
 }

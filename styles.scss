@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.title {
+    text-align: center;
+}
+
 .ships__scores {
     color: red;
 }
@@ -15,21 +19,23 @@
     .ships__mothership {
         width: 60vw;
         box-shadow: 5px 5px;
+        border-radius: 50%;
     }
 
     .ships__dship {
         width: 30vw;
         box-shadow: 2px 2px;
+        border-radius: 50%;
     }
 
     .ships__aship {
         width: 15vw;
         box-shadow: 2px 2px;
+        border-radius: 50%;
     }
     // font-family: irish-grover;
     .ships__mothership, .ships__dship, .ships__aship { 
         border: 2px solid black;
-        border-radius: 20px;
         display: flex;
         // text-align: center;
     }
@@ -40,6 +46,8 @@
 .player {
     border: 2px solid black;
     border-radius: 20px;
+    width: 300px;
+    height: 300px;
     display: flex;
 }
 

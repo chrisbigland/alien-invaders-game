@@ -6,37 +6,25 @@ class Ship {
     this.hitValue = hitValue;
     this.shipScore = shipScore;
     this.id = id;
-    this.isDestroyed = false;
+    // this.isDestroyed = false;
   }
 
   hit(targetShip) {
-    //REWORK THIS AS TARGETTING SHIP IN PREVIOUS FUNCTION
-    // accepts a number input
     const newScore = targetShip.shipScore - targetShip.hitValue;
     targetShip.shipScore = newScore;
     return targetShip.shipScore; //returns a reduced score
   }
-  destroy() {
-    // when do change isDestroyed to true?
-  }
-  // (alien ship scores reduce)
-  //   updatePlayerScore() {
-
+  //   destroy() {
+  //     // when do change isDestroyed to true?
   //   }
-  //   destroyShip() {
-
-  //   } //(ship removed from array)
 }
 
 const motherShip = new Ship("Mother Ship", "Mother Ship", 9, 100, 1);
-
 const defenceShip1 = new Ship("Defence Ship 1", "Defence Ship", 10, 80, 2);
-
 const defenceShip2 = new Ship("Defence Ship 2", "Defence Ship", 10, 80, 3);
 const defenceShip3 = new Ship("Defence Ship 3", "Defence Ship", 10, 80, 4);
 const defenceShip4 = new Ship("Defence Ship 4", "Defence Ship", 10, 80, 5);
 const defenceShip5 = new Ship("Defence Ship 5", "Defence Ship", 10, 80, 6);
-
 const attackShip1 = new Ship("Attack Ship 1", "Attack Ship", 12, 45, 7);
 const attackShip2 = new Ship("Attack Ship 2", "Attack Ship", 12, 45, 8);
 const attackShip3 = new Ship("Attack Ship 3", "Attack Ship", 12, 45, 9);
@@ -46,7 +34,7 @@ const attackShip6 = new Ship("Attack Ship 6", "Attack Ship", 12, 45, 12);
 const attackShip7 = new Ship("Attack Ship 7", "Attack Ship", 12, 45, 13);
 const attackShip8 = new Ship("Attack Ship 8", "Attack Ship", 12, 45, 14);
 
-const shipsArr = [
+let shipsArr = [
   motherShip,
   defenceShip1,
   defenceShip2,
@@ -63,11 +51,15 @@ const shipsArr = [
   attackShip8,
 ];
 
+const shipsArrCopy = [...shipsArr];
+console.log(shipsArrCopy);
+
 const playerBtn = document.querySelector(".player");
 const gameboard = document.querySelector(".ships");
 const gameboardHtml = gameboard.innerHTML;
 
-playerBtn.addEventListener("click", () => {
+const evListenerFunction = () => {
+  // include new functions here as ev listener doing too much
   const targetShipIndex = shoot(shipsArr);
   console.log(targetShipIndex);
   console.log(shipsArr[targetShipIndex]);
@@ -81,61 +73,42 @@ playerBtn.addEventListener("click", () => {
   if (targetShip.shipScore > 0) {
     targetScoreHtml.innerHTML = targetShip.shipScore;
   } else {
-    shipsArr.splice(targetShipIndex, 1);
-    const targetShipHtml = document.querySelector(`.ships__${targetShip.id}`);
-    targetShipHtml.innerHTML = `<p>eliminated</p>`;
+    destroy(targetShipIndex, targetShip);
   }
   if (shipsArr.length === 0) {
-    const winningHtml = document.querySelector(".ships");
-    winningHtml.innerHTML = `<p>You Win!!!</p>
-    <button class="ships__new-game-btn">New Game</button>`;
-    // console.log("it's empty");
-    const newGameBtn = document.querySelector(".ships__new-game-btn");
-    newGameBtn.addEventListener("click", () => {
-      winningHtml.innerHTML = gameboardHtml;
-    });
+    winGame();
   }
-});
+};
+
+playerBtn.addEventListener("click", evListenerFunction);
 
 // export
 const shoot = (shipsArr) => {
   if (shipsArr.length > 0) {
+    console.log("shoot function activated");
     const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
     return targetShipIndex;
   } else {
     return null;
   }
-  // Select random ship (in an array of objects)
-  // output - random ship
-};
-const destroy = (ship) => {
-  // Remove this ship from the array
 };
 
-// methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score, startNewGame
+const destroy = (targetShipIndex, targetShip) => {
+  shipsArr.splice(targetShipIndex, 1);
+  const targetShipHtml = document.querySelector(`.ships__${targetShip.id}`);
+  targetShipHtml.innerHTML = `<p>eliminated</p>`;
+};
 
-// FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS FUNCTIONS  - keep them pure. Can adapt to class methods later if reqd.
-
-// SHOOT - random ship selected, run hit function
-// runs when player clicks button
-
-// HIT - to run on click of shoot button. Uses return from shoot function (use dummy data in test) to select ship and reduce score accordingly. If ship score is 0, removes item from shipsArray.
-// const hit = (casualtyShip) => {
-// input - casualtyShip
-// reduces score
-// outputs reduced score
-// }
-
-// UPDATE PLAYER SCORE
-// const updatePlayerScore = () => {
-
-// }
-
-//  START NEW GAME
-
-// Sun 6th Nov
-// get tests linked up, decide on tests and start writing functions/classes
-// could start on UI
+const winGame = () => {
+  const winningHtml = document.querySelector(".ships");
+  winningHtml.innerHTML = `<p>You Win!!!</p>
+    <button class="ships__new-game-btn">New Game</button>`;
+  // console.log("it's empty");
+  const newGameBtn = document.querySelector(".ships__new-game-btn");
+  newGameBtn.addEventListener("click", () => {
+    winningHtml.innerHTML = gameboardHtml; // turn this into a function? create new game?
+  });
+};
 
 // ACTIONS
 // USE TDD approach - write tests FIRST. Decide what tests we need.
@@ -166,5 +139,4 @@ const destroy = (ship) => {
 //▪ Each starts with 45 hit points
 //▪ Each loses 12 hit points each time it is hit.
 
-// methods - shoot(chooses random ship), hit (alien ship scores reduce), update player score, destroy ship (ship removed from array)
 // data - score, (timer?), number of ships left, ships' health, number of ships left, ships starting scores, amount score gets lowered each time hit.
