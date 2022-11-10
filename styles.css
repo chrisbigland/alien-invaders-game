@@ -3,40 +3,126 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Irish Grover", cursive;
+}
+
+body {
+  background-image: url("./images/sky.jpeg");
+  background-size: cover;
 }
 
 .title {
   text-align: center;
+  color: #7EB838;
+  font-size: 3rem;
 }
 
 .ships__scores {
   color: red;
 }
 
+.ships {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.ships .ships__1 {
+  grid-column-start: 1;
+  grid-column-end: 41;
+}
+.ships .ships__2 {
+  grid-column-start: 1;
+  grid-column-end: 9;
+}
+.ships .ships__3 {
+  grid-column-start: 9;
+  grid-column-end: 17;
+}
+.ships .ships__4 {
+  grid-column-start: 17;
+  grid-column-end: 25;
+}
+.ships .ships__5 {
+  grid-column-start: 25;
+  grid-column-end: 33;
+}
+.ships .ships__6 {
+  grid-column-start: 33;
+  grid-column-end: 41;
+}
+.ships .ships__7 {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+.ships .ships__8 {
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+.ships .ships__9 {
+  grid-column-start: 11;
+  grid-column-end: 16;
+}
+.ships .ships__10 {
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.ships .ships__11 {
+  grid-column-start: 21;
+  grid-column-end: 26;
+}
+.ships .ships__12 {
+  grid-column-start: 26;
+  grid-column-end: 31;
+}
+.ships .ships__13 {
+  grid-column-start: 31;
+  grid-column-end: 36;
+}
+.ships .ships__14 {
+  grid-column-start: 36;
+  grid-column-end: 41;
+}
 .ships .ships__mothership {
-  width: 60vw;
   box-shadow: 5px 5px;
   border-radius: 50%;
+  height: 150px;
+  background-color: #545253;
+  font-size: 2rem;
 }
 .ships .ships__dship {
-  width: 30vw;
   box-shadow: 2px 2px;
   border-radius: 50%;
+  height: 100px;
+  background-color: #939496;
+  font-size: 1.2rem;
+  margin: 30px 10px 50px;
 }
 .ships .ships__aship {
-  width: 15vw;
   box-shadow: 2px 2px;
   border-radius: 50%;
+  height: 75px;
+  background-color: #D3D3D1;
+  font-size: 0.85rem;
+  margin: 0px 5px;
 }
 .ships .ships__mothership, .ships .ships__dship, .ships .ships__aship {
   border: 2px solid black;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.player {
+.player-container {
+  display: flex;
+  justify-content: center;
+}
+
+.player-container__player {
   border: 2px solid black;
   border-radius: 20px;
   width: 300px;
-  height: 300px;
+  height: 150px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }

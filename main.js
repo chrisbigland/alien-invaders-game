@@ -54,8 +54,8 @@ let shipsArr = [
 const shipsArrCopy = [...shipsArr];
 console.log(shipsArrCopy);
 
-const playerBtn = document.querySelector(".player");
-const gameboard = document.querySelector(".ships");
+const playerBtn = document.querySelector(".player-container__player");
+const gameboard = document.querySelector("body");
 const gameboardHtml = gameboard.innerHTML;
 
 const evListenerFunction = () => {
