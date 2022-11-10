@@ -111,6 +111,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+.ships .ships__win-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+}
+.ships .ships__win {
+  font-size: 4rem;
+  color: #7EB838;
+}
 
 .player-container {
   display: flex;

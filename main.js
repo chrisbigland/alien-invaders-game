@@ -1,3 +1,10 @@
+// When coming back to this...
+// look at tests - need to finish writing these
+// Implement newly learned React knowledge to resolve issues with amending innerHTML (when starting new game - currently working by reloading window but find another way so I can learn from this)
+// check css to see if there's a more brief way to do it (many fractions in grid)
+// test suite failing to run issues
+// export key word stopping webpage from running - look into reasons for this.
+
 // export
 class Ship {
   constructor(shipName, shipType, hitValue, shipScore, id) {
@@ -6,17 +13,13 @@ class Ship {
     this.hitValue = hitValue;
     this.shipScore = shipScore;
     this.id = id;
-    // this.isDestroyed = false;
   }
 
   hit(targetShip) {
     const newScore = targetShip.shipScore - targetShip.hitValue;
     targetShip.shipScore = newScore;
-    return targetShip.shipScore; //returns a reduced score
+    return targetShip.shipScore;
   }
-  //   destroy() {
-  //     // when do change isDestroyed to true?
-  //   }
 }
 
 const motherShip = new Ship("Mother Ship", "Mother Ship", 9, 100, 1);
@@ -59,14 +62,9 @@ const gameboard = document.querySelector("body");
 const gameboardHtml = gameboard.innerHTML;
 
 const evListenerFunction = () => {
-  // include new functions here as ev listener doing too much
   const targetShipIndex = shoot(shipsArr);
-  console.log(targetShipIndex);
-  console.log(shipsArr[targetShipIndex]);
   const targetShip = shipsArr[targetShipIndex];
-  console.log(targetShip.shipScore);
   targetShip.hit(targetShip);
-  console.log(`id is${targetShip.id}`);
   const targetScoreHtml = document.querySelector(
     `.ships__${targetShip.id}-score`
   );
@@ -85,7 +83,6 @@ playerBtn.addEventListener("click", evListenerFunction);
 // export
 const shoot = (shipsArr) => {
   if (shipsArr.length > 0) {
-    console.log("shoot function activated");
     const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
     return targetShipIndex;
   } else {
@@ -93,6 +90,7 @@ const shoot = (shipsArr) => {
   }
 };
 
+// export
 const destroy = (targetShipIndex, targetShip) => {
   shipsArr.splice(targetShipIndex, 1);
   const targetShipHtml = document.querySelector(`.ships__${targetShip.id}`);
@@ -101,42 +99,12 @@ const destroy = (targetShipIndex, targetShip) => {
 
 const winGame = () => {
   const winningHtml = document.querySelector(".ships");
-  winningHtml.innerHTML = `<p>You Win!!!</p>
-    <button class="ships__new-game-btn">New Game</button>`;
-  // console.log("it's empty");
+  winningHtml.innerHTML = `<div style="position:fixed;top:40%;left:30%;display:flex;flex-direction:column;text-align:center;"><p  style="font-size:4rem;color:#7EB838;">You Win!!!</p>
+    <button class="ships__new-game-btn" style="width:40vw;height:10vh;border-radius:50%;box-shadow:5px5px;"">New Game</button></div>`;
+  playerBtn.style.visibility = "hidden";
   const newGameBtn = document.querySelector(".ships__new-game-btn");
   newGameBtn.addEventListener("click", () => {
-    winningHtml.innerHTML = gameboardHtml; // turn this into a function? create new game?
+    // in future - change this so we re-create all of the ships and put them back into shipsArr
+    window.location.reload();
   });
 };
-
-// ACTIONS
-// USE TDD approach - write tests FIRST. Decide what tests we need.
-// design UI on figma
-// Create something that represents ship in html e.g. ship 1 - 50 health left, ship 2 destroyed etc.
-// firing - button that, when clicked, randomly "hits" one of the ships, and you would see that reflected in the UI.
-// later could include timer or movement - if not done in time, player loses - first get the rest of the game working
-
-// BRIEF
-// based on space invaders
-// use skills learnt in this module - pure functions, oop, tdd
-// Use OOP mindset (although some functions may be required.) Think about what data and what methods I'll need
-// Simple, text only game with a single button that hits a random alien ship in the fleet.
-// Each time the button is pressed, a random alien ship is hit and its hit points are reduced.
-// Once an alien ships points have hit zero the ship is destroyed and can’t be hit again.
-// The game is over once all alien ships have been destroyed.
-// should be completed in under 150 lines inc comments (exc tests)
-// need to be able to start new game once game is over
-
-//1 x Mother ship-
-//▪ 100 Hit Points -
-//▪ Loses 9 hit points every time it is hit -
-//▪ All ships are destroyed if the Mother ship is destroyed
-//o 5 x Defence ship -
-//▪ Each one starts with 80 hit points -
-//▪ Each one Loses 10 hit points each time it is hit
-//o 8 x Attack ship
-//▪ Each starts with 45 hit points
-//▪ Each loses 12 hit points each time it is hit.
-
-// data - score, (timer?), number of ships left, ships' health, number of ships left, ships starting scores, amount score gets lowered each time hit.

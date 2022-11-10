@@ -1,4 +1,4 @@
-import { Ship } from "./main.js";
+import { Ship, shoot, destroy } from "./main.js";
 
 // test plan - already written two functions with code so do like that for now.
 // following tests - write 'stub' functions first (look into this) and then test them. They'll fail at first, write the code to make them pass. Maybe research tdd and stub functions
@@ -18,16 +18,15 @@ import { Ship } from "./main.js";
 // 5. should trigger the destroyShip() function on the defence ship if the current score is 10. Not sure if I can test this??
 // 5. should trigger the destroyShip() function on the attack ship if the current score is 9. Not sure if I can test this??
 // DESTROY SHIP
-// 1. should remove the ship from the array. 
-// 2. should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed. 
-// 3. should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed. 
+// 1. should remove the ship from the array.
+// 2. should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed.
+// 3. should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed.
 // GAME OVER
 // 1. I don't think I can test for this - changing html
 // PLAYER WINS
 // same as above - don't believe I can test it - gets triggered when ships arr.length = 0 and innerhtml changes
 // TIMER
 // 1. If timer reaches zero, game over function initiated
-
 
 const testMotherShip = new Ship("Mother Ship", "Mother Ship", 9, 100);
 const testDefenceShip = new Ship("Defence Ship", "Defence Ship", 10, 80);
@@ -114,16 +113,16 @@ describe("hit method test", () => {
 });
 
 describe("destroy method test", () => {
-    it("should remove one ship from the array when a ship has zero points", () => {
-        testAttackShip.destroy()
-    })
-    it("should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed. ", () => {
-        
-    })
-    it("should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed. ", () => {
-        
-    })
-})
+  it("should remove one ship from the array (((when a ship has zero points - check this as this occurs within ev. listener)))", () => {
+    const testShipsArr = [testMotherShip, testDefenceShip, testAttackShip];
+    testAttackShip.shipScore = 0;
+    destroy(2, testAttackShip);
+    const output = testShipsArr.includes(testAttackShip);
+    expect(output).toBe(false);
+  });
+  it("should return gameInPlay (create this variable!) as true if there is at least one item in the array after the ship's removed. ", () => {});
+  it("should return gameInPlay (create this variable!) as false if there is are no items left in the array after the ship's removed. ", () => {});
+});
 
 // how do we test if it is working with an updated score (e.g. already been reduced)
 
