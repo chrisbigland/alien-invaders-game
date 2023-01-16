@@ -80,7 +80,6 @@ const evListenerFunction = () => {
 
 playerBtn.addEventListener("click", evListenerFunction);
 
-// export
 const shoot = (shipsArr) => {
   if (shipsArr.length > 0) {
     const targetShipIndex = Math.floor(Math.random() * shipsArr.length);
@@ -90,7 +89,6 @@ const shoot = (shipsArr) => {
   }
 };
 
-// export
 const destroy = (targetShipIndex, targetShip) => {
   shipsArr.splice(targetShipIndex, 1);
   const targetShipHtml = document.querySelector(`.ships__${targetShip.id}`);

@@ -1,7 +1,7 @@
 import { Ship, shoot, destroy } from "./main.js";
 
 // test plan - already written two functions with code so do like that for now.
-// following tests - write 'stub' functions first (look into this) and then test them. They'll fail at first, write the code to make them pass. Maybe research tdd and stub functions
+// following tests - write 'stub' functions first 
 
 // TESTS
 // SHOOT METHOD

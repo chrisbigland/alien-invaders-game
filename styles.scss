@@ -27,12 +27,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    // grid-template-areas: 
-    // "ship1 ship1 ship1 ship1 ship1 ship1 ship1 ship1"
-    // "ship2 ship3 ship4 ship5 ship6"
-    // "ship7 ship8 ship9 ship10 ship11 ship12 ship13 ship14";
-    // grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
     .ships__1{
         grid-column-start: 1;
@@ -107,7 +101,6 @@ body {
     
 
     .ships__mothership {
-        // width: 60vw;
         box-shadow: 5px 5px;
         border-radius: 50%;
         height: 150px;
@@ -116,7 +109,6 @@ body {
     }
 
     .ships__dship {
-        // width: 30vw;
         box-shadow: 2px 2px;
         border-radius: 50%;
         height: 100px;
@@ -126,7 +118,6 @@ body {
     }
 
     .ships__aship {
-        // width: 15vw;
         box-shadow: 2px 2px;
         border-radius: 50%;
         height: 75px;
@@ -139,7 +130,6 @@ body {
     .ships__mothership, .ships__dship, .ships__aship { 
         border: 2px solid black;
         display: flex;
-        // text-align: center;
         justify-content: center;
         align-items: center;
     }
