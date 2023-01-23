@@ -164,3 +164,101 @@ body {
     align-items: center;
 }
 
+
+  @media screen and (max-width: 1235px) {
+
+    // .ships__dship {
+    //     font-size: 1rem;
+    // }
+
+    .dship-descrip {
+        // font-size: 0.65rem;
+        font-size: 1rem;
+    }
+
+    .aship-descrip {
+        font-size: 0.8rem;
+    }
+
+    .ships__aship{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    // .title {
+
+    //     font-size: 10rem;
+    // }
+  }
+
+
+  @media screen and (max-width: 1075px) {
+
+
+    .dship-descrip {
+        font-size: 0.8rem;
+    }
+
+    .aship-descrip {
+        font-size: 0.7rem;
+    }
+
+
+  }
+
+  @media screen and (max-width: 1000px) {
+    .aship-descrip {
+        font-size: 0.6rem;
+        text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 880px) {
+
+
+    .ships__dship {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dship-descrip {
+        font-size: 0.6rem;
+    }
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+
+
+    .dship-descrip {
+        font-size: 0.5rem;
+        margin-bottom: 10px;
+    }
+
+    .ships__scores {
+        font-size: 1.3rem;
+    }
+
+    .aship-descrip {
+        font-size: 0.5rem;
+        margin-bottom: 5px;
+    }
+
+    .mothership-descrip {
+        font-size: 1.5rem;
+    }
+    
+  }
+
+  @media screen and (max-width: 540px) {
+    .dship-descrip {
+        font-size: 0.4rem;
+        text-align: center;
+    }
+
+    .ships__scores {
+        font-size: 0.9rem;
+    }
+  }
